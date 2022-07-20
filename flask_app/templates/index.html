@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <title>index</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col mt-5">
+          {% with messages = get_flashed_messages(with_categories = True) %}<!-- declare a variable called messages -->
+          
+            
+
+
+          <h2 class="mb-5">Register</h2>
+
+          <!-- I want /user/login to handle the information from my form -->
+
+          <!-- name is what form is looking for -->
+          <form action="/users/register" method="post">
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First Name:</label>
+              <input type="text" name="first_name" id="first_name" class="form-control">
+              {% if messages %}<!-- check if there are any messages -->
+              {% for category, message in messages %}<!-- loop through the messages -->
+              {% if category  == "first_name" %}
+              <p class="form-text text-danger" >{{message}}</p><!-- display each message in a paragraph tag -->
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name:</label>
+              <input type="text" name="last_name" id="last_name" class="form-control">
+              {% if messages %}<!-- check if there are any messages -->
+              {% for category, message in messages %}<!-- loop through the messages -->
+              {% if category  == "first_name" %}
+              <p class="form-text text-danger" >{{message}}</p><!-- display each message in a paragraph tag -->
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" name="email" id="email" class="form-control">
+              {% if messages %}<!-- check if there are any messages -->
+              {% for category, message in messages %}<!-- loop through the messages -->
+              {% if category  == "email" %}
+              <p class="form-text text-danger" >{{message}}</p><!-- display each message in a paragraph tag -->
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" name="password" id="password" class="form-control">
+              {% if messages %}<!-- check if there are any messages -->
+              {% for category, message in messages %}<!-- loop through the messages -->
+              {% if category  == "confirmation" %}
+              <p class="form-text text-danger" >{{message}}</p><!-- display each message in a paragraph tag -->
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="password_confirmation" class="form-label">Confirm Password:</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+              {% if messages %}<!-- check if there are any messages -->
+                {% for category, message in messages %}<!-- loop through the messages -->
+                {% if category  == "confirmation" %}
+                <p class="form-text text-danger" >{{message}}</p><!-- display each message in a paragraph tag -->
+                {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="d-flex justify-content-end">
+              <input class="btn bg-primary" type="submit" value="Register">
+            </div>
+          </form>
+          {% endwith %}
+        </div>
+        <div class="col">
+          <div class="card">
+            <h5 class="card-header">Login</h5>
+            <div class="card-body">
+              <form action="/users/login" method="post">
+                <div class="mb-3">
+                  <label for="log_email" class="form-label">Email:</label>
+                  <input class="form-control" type="text" name="email" id="email">
+                </div>
+                <div class="mb-3">
+                  <label for="log_password" class="form-label">Password:</label>
+                  <input class="form-control" type="password" name="password" id="password">
+                </div>
+                <div class="d-flex justify-content-end">
+                  <input class="btn bg-primary" type="submit" value="Login">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+  </body>
+</html>
